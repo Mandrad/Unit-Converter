@@ -1,0 +1,104 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package org.miage.unitconverter;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author Sébastien
+ */
+public class SystemTest {
+    
+    public SystemTest() {
+    }
+    
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+    }
+    
+    @After
+    public void tearDown() {
+    }
+
+    /**
+     * Test of addType method, of class System.
+     */
+    @Test
+    public void testAddType() {
+        Type type = new Type("longueur", "m");
+        System instance = new System("International");
+        instance.addType(type);
+        assertTrue(instance.getTypeList().contains(type));
+    }
+
+    /**
+     * Test of removeType method, of class System.
+     */
+    @Test
+    public void testRemoveType() {
+        Type type = new Type("longueur", "m");
+        System instance = new System("International");
+        instance.addType(type);
+        boolean expResult = true;
+        boolean result = instance.removeType("longueur");
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getName method, of class System.
+     */
+    @Test
+    public void testGetName() {
+        System instance = new System("International");
+        String expResult = "International";
+        String result = instance.getName();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of setName method, of class System.
+     */
+    @Test
+    public void testSetName() {
+        String name = "International";
+        System instance = new System("");
+        instance.setName(name);
+        assertEquals("International", instance.getName());
+    }
+
+    /**
+     * Test of getTypeList method, of class System.
+     */
+    @Test
+    public void testGetTypeList() {
+        System instance = new System("International");
+        Type longueur = new Type("longueur","m");
+        Type poids = new Type("poids","g");
+        List<Type> liste = new ArrayList<Type>();
+        liste.add(longueur);
+        liste.add(poids);
+        instance.setTypeList(liste);
+        List<Type> result = instance.getTypeList();
+        assertEquals(liste, result);
+    }    
+}
