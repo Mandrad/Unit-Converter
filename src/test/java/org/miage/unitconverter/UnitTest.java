@@ -3,40 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.miage.unitconverter;
 
 import java.math.BigDecimal;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
+ * This class represent our test in the class Unit
  *
- * @author Sébastien
+ * @author Sebastien DUBOIS and Louis MORIN
+ * @version 1.0
  */
 public class UnitTest {
-    
+
     public UnitTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
     }
 
     /**
@@ -115,5 +96,5 @@ public class UnitTest {
         Boolean result = instance.isReference();
         assertEquals(expResult, result);
     }
-    
+
 }
