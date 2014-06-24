@@ -1,7 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2014 Louis MORIN and S�bastien DUBOIS
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.miage.unitconverter;
 
@@ -14,6 +25,10 @@ import static org.junit.Assert.*;
  *
  * @author Sebastien DUBOIS and Louis MORIN
  * @version 1.0
+ * 
+ * Date of last change : 23/06/2014
+ * Author of last change : Louis MORIN
+ * Revision number : 15
  */
 public class UnitTest {
 
@@ -37,7 +52,7 @@ public class UnitTest {
     @Test
     public void testSetDecalage() {
         BigDecimal decalage = BigDecimal.valueOf(22.0);
-        Unit instance = new Unit("°C", decalage, Boolean.TRUE);
+        Unit instance = new Unit("�C", decalage, Boolean.TRUE);
         instance.setGap(decalage);
         assertEquals(decalage, instance.getGap());
     }
@@ -58,8 +73,8 @@ public class UnitTest {
      */
     @Test
     public void testSetName() {
-        String name = "mm²";
-        Unit instance = new Unit("mm²", BigDecimal.ZERO, Boolean.TRUE);
+        String name = "mm�";
+        Unit instance = new Unit("mm�", BigDecimal.ZERO, Boolean.TRUE);
         instance.setName(name);
         assertEquals(name.toUpperCase(), instance.getName());
     }
@@ -97,4 +112,25 @@ public class UnitTest {
         assertEquals(expResult, result);
     }
 
+    /**
+     * Test of setReference method, of class Unit.
+     */
+    @Test
+    public void testSetReference() {
+        boolean ref = false;
+        Unit instance = new Unit("mm", BigDecimal.ONE, Boolean.TRUE);
+        instance.setReference(ref);
+        assertFalse(instance.isReference());
+    }
+
+    /**
+     * Test of getType method, of class Unit.
+     */
+    @Test
+    public void testGetType() {
+        Type type = new Type("longueur", "m");
+        Unit instance = new Unit("mm", BigDecimal.ONE, Boolean.TRUE);
+        instance.setType(type);
+        assertEquals(instance.getType(), type);
+    }
 }

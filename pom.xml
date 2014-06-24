@@ -87,7 +87,7 @@
                     <show>public</show>
                     <nohelp>true</nohelp>
                 </configuration>
-            </plugin>  
+            </plugin> 
         </plugins>  
     </build>  
     <reporting>

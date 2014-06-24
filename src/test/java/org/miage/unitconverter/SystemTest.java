@@ -1,7 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2014 Louis MORIN and S�bastien DUBOIS
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.miage.unitconverter;
 
@@ -15,6 +26,10 @@ import static org.junit.Assert.*;
  *
  * @author Sebastien DUBOIS and Louis MORIN
  * @version 1.0
+ * 
+ * Date of last change : 23/06/2014
+ * Author of last change : Louis MORIN
+ * Revision number : 15
  */
 public class SystemTest {
 
@@ -81,5 +96,16 @@ public class SystemTest {
         instance.setTypeList(liste);
         List<Type> result = instance.getTypeList();
         assertEquals(liste, result);
+    }
+    
+    /**
+     * Test of removeType method, of class System.
+     */
+    @Test
+    public void testRemoveTypeFalse() {
+        Type type = new Type("longueur", "m");
+        System instance = new System("International");
+        instance.addType(type);
+        assertFalse(instance.removeType("largeur"));
     }
 }

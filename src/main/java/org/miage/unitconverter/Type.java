@@ -1,7 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2014 Louis MORIN and Sébastien DUBOIS
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.miage.unitconverter;
 
@@ -14,6 +25,10 @@ import java.util.List;
  *
  * @author Sebastien DUBOIS and Louis MORIN
  * @version 1.0
+ * 
+ * Date of last change : 12/06/2014
+ * Author of last change : Louis MORIN
+ * Revision number : 03
  */
 public class Type {
 
@@ -89,6 +104,7 @@ public class Type {
      * @param name Name of type to create
      * @param refName Name of reference unit
      */
+    
     public Type(String name, String refName) {
         this.name = name;
         this.coefficientList = new ArrayList();
@@ -143,7 +159,7 @@ public class Type {
     public boolean modifyCoef(String name, BigDecimal coefficient) {
         if (coefficient != BigDecimal.ZERO) {
             for (Unit u : coefficientList) {
-                if (u.getName().equals(name)) {
+                if (u.getName().toUpperCase().equals(name.toUpperCase())) {
                     u.setCoefficient(coefficient);
                     return true;
                 }
@@ -161,7 +177,7 @@ public class Type {
      */
     public boolean modifyGap(String name, BigDecimal gap) {
         for (Unit u : coefficientList) {
-            if (u.getName().equals(name)) {
+            if (u.getName().toUpperCase().equals(name.toUpperCase())) {
                 u.setGap(gap);
                 return true;
             }
@@ -177,7 +193,7 @@ public class Type {
      */
     public boolean removeCoef(String name) {
         for (Unit u : coefficientList) {
-            if (u.getName().equals(name)) {
+            if (u.getName().toUpperCase().equals(name.toUpperCase())) {
                 coefficientList.remove(u);
                 u.setType(null);
                 return true;
@@ -194,7 +210,7 @@ public class Type {
      */
     public Unit isInList(String name) {
         for (Unit u : coefficientList) {
-            if (u.getName().equals(name.toUpperCase())) {
+            if (u.getName().toUpperCase().equals(name.toUpperCase())) {
                 return u;
             }
         }
@@ -209,7 +225,7 @@ public class Type {
      */
     public boolean existInList(String name) {
         for (Unit u : coefficientList) {
-            if (u.getName().equals(name.toUpperCase())) {
+            if (u.getName().toUpperCase().equals(name.toUpperCase())) {
                 return true;
             }
         }
@@ -225,6 +241,36 @@ public class Type {
         for (Unit u : coefficientList) {
             if (u.isReference()) {
                 return u;
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * This method get the coefficient
+     *
+     * @param name Name of the search coefficient
+     * @return the Coefficient search. Null if it doesn't exist.
+     */
+    public BigDecimal getCoefficient(String name) {
+        for (Unit u : coefficientList) {
+            if (u.getName().toUpperCase().equals(name.toUpperCase())) {
+                return u.getCoefficient();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * This method get the gap
+     *
+     * @param name Name of the search gap
+     * @return the gap search. Null if it doesn't exist.
+     */
+    public BigDecimal getGap(String name) {
+        for (Unit u : coefficientList) {
+            if (u.getName().toUpperCase().equals(name.toUpperCase())) {
+                return u.getGap();
             }
         }
         return null;
